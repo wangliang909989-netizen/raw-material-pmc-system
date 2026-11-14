@@ -1,0 +1,25 @@
+YAML
+
+name: 原材料物控分析系统
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-python:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 获取项目代码
+        uses: actions/checkout@v4
+
+      - name: 安装Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 运行物控分析程序
+        run: python main.py
